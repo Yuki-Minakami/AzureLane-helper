@@ -1,4 +1,4 @@
-# encoding:utf-8
+# -*- coding: UTF-8 -*-
 import requests 
 
 # client_id 为官网获取的AK， client_secret 为官网获取的SK

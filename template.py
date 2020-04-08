@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import cv2
 import numpy as np
 # 1.模板匹配
