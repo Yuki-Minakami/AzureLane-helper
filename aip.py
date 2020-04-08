@@ -14,8 +14,13 @@ import base64
 
 request_url = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic"
 # 二进制方式打开图片文件
-f = open('images/i7.jpg', 'rb')
+f = open('images/i6.jpg', 'rb')
 img = base64.b64encode(f.read())
+
+
+def click(phase):
+    return True
+
 
 params = {"image":img}
 # access_token = '[调用鉴权接口获取的token]'
@@ -56,7 +61,3 @@ if response:
             break
 
 
-
-def click(phase):
-
-    return True
