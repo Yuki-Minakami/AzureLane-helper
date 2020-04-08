@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 import requests 
+import sys
 
 # client_id 为官网获取的AK， client_secret 为官网获取的SK
 host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=vyRzDgxyEmIXKQtKnN1Fh4zB&client_secret=SjLaMh0ZYS8Fdi8geZYa9ox1hOfnwRY8'
@@ -9,12 +10,14 @@ print(response.json()["access_token"])
 
 access_token = response.json()["access_token"]
 
+imgPath = sys.argv[1] 
+
 import requests
 import base64
 
 request_url = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic"
 # 二进制方式打开图片文件
-f = open('images/i6.jpg', 'rb')
+f = open(imgPath, 'rb')
 img = base64.b64encode(f.read())
 
 
@@ -29,7 +32,7 @@ headers = {'content-type': 'application/x-www-form-urlencoded'}
 response = requests.post(request_url, data=params, headers=headers)
 if response:
     word_list =  response.json()['words_result']
-    # print (word_list)
+    print (word_list)
     for obj in word_list:
         if u"第1章" in obj['words']:
             print("phase1")
