@@ -31,31 +31,31 @@ if response:
     word_list =  response.json()['words_result']
     # print (word_list)
     for obj in word_list:
-        if "第1章" in obj['words']:
+        if u"第1章" in obj['words']:
             print("phase1")
             click("phase1")
             break
-        if "近海" in obj['words']:
+        if u"近海" in obj['words']:
             print("phase2")
             click("phase2")
             break
-        if "选择" in obj['words']:
+        if u"选择" in obj['words']:
             print("phase3")
             click("phase3")
             break
-        if "撤" in obj['words']:
+        if u"撤" in obj['words']:
             print("phase4")
             click("phase4")
             break
-        if "战斗评价" in obj['words']:
+        if u"战斗评价" in obj['words']:
             print("phase5")
             click("phase5")
             break
-        if "获得" in obj['words']:
+        if u"获得" in obj['words']:
             print("phase6")
             click("phase6")
             break
-        if "确定" in obj['words']:
+        if u"确定" in obj['words']:
             print("phase7")
             click("phase7")
             break
