@@ -30,7 +30,7 @@ def rotate(dc,second):
             return
 
 def click(dc,second):
-    sleep(1)
+    sleep(0.2)
     a= datetime.datetime.now()
     while True:
         p2.start(dc)
@@ -40,11 +40,13 @@ def click(dc,second):
         if (b-a).seconds>second:
             return
 
-rotate(2.5,4)
-rotate(12.5,4)
+
+rotate(12.5,1)
 
 click(12.5,1)
 click(7.5,1)
+
+rotate(2.5,2)
 
 GPIO.cleanup()
 
