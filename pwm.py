@@ -22,15 +22,10 @@ def run(dc,second):
         p.start(dc)
         sleep(0.02)
         p.ChangeDutyCycle(0)
-        sleep(0.2)
         b= datetime.datetime.now()
         if (b-a).seconds>second:
             return
 
-
-run(0,5)
 run(2.5,5)
-run(5,5)
-run(7.5,5)
-run(10,5)
 run(12.5,5)
+
