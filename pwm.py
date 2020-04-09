@@ -41,12 +41,12 @@ def click(dc,second):
             return
 
 
-rotate(12.5,1)
+rotate(12.5,0.5)
 
-click(12.5,0.5)
-click(7.5,0.5)
+click(12.5,0.4)
+click(7.5,0.2)
 
-rotate(2.5,0.5)
+rotate(2.5,0.2)
 
 GPIO.cleanup()
 
