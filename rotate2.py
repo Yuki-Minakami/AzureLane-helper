@@ -20,11 +20,12 @@ def rotate(angle):
     sleep(0.5)
     p.ChangeDutyCycle(0)
 
-rotate(0)
-sleep(1)
+
 rotate(90)
 sleep(1)
 rotate(180)
+sleep(1)
+rotate(90)
 sleep(1)
 rotate(0)
 
