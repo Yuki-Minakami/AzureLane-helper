@@ -21,6 +21,7 @@ try:
         p.ChangeDutyCycle(2+(angle/18))
         sleep(0.5)
         p.ChangeDutyCycle(0)
+        break
 
 finally:
     p.stop()
