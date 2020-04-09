@@ -19,7 +19,9 @@ print("rotate 0 to 180")
 duty=2
 while duty<=12:
     p.ChangeDutyCycle(duty)
-    sleep(1)
+    sleep(0.3)
+    p.ChangeDutyCycle(duty)
+    sleep(0.7)
     duty=duty+1
 
 
