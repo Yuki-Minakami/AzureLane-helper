@@ -19,7 +19,7 @@ p2 = GPIO.PWM(37,50) #50HZ
 p2.start(0)
 
 def rotate(dc,second):
-    sleep(1)
+    sleep(0.5)
     a= datetime.datetime.now()
     while True:
         p.start(dc)
@@ -40,11 +40,12 @@ def click(dc,second):
         if (b-a).seconds>second:
             return
 
-rotate(2.5,5)
-rotate(12.5,5)
+rotate(2.5,4)
+rotate(12.5,4)
 
-click(2.5,5)
-click(12.5,5)
+click(7.5,3)
+click(12.5,3)
+click(7.5,3)
 
 GPIO.cleanup()
 
