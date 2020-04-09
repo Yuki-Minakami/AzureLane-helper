@@ -43,9 +43,8 @@ def click(dc,second):
 rotate(2.5,4)
 rotate(12.5,4)
 
-click(7.5,3)
-click(12.5,3)
-click(7.5,3)
+click(12.5,1)
+click(7.5,1)
 
 GPIO.cleanup()
 
