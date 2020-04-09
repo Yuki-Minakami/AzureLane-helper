@@ -27,7 +27,9 @@ while duty<=12:
 
 print("back to 90")
 p.ChangeDutyCycle(7)
-sleep(2)
+sleep(0.5)
+p.ChangeDutyCycle(0)
+sleep(1.5)
 
 print("back to 0")
 p.ChangeDutyCycle(2)
