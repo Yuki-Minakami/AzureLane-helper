@@ -30,16 +30,54 @@ def click(phase):
     GPIO.cleanup()
     return True
 
-
-def rotate(phase):
-    GPIO.setup(7, GPIO.OUT)
-    p = GPIO.PWM(7,50)		
+def reset():
+    GPIO.setup(35, GPIO.OUT)
+    p = GPIO.PWM(35,50)	
     p.start(5.0)				
     p.stop()
     GPIO.cleanup()
+    return True
 
-    click(phase)
+def rotate(phase):
+    GPIO.setup(7, GPIO.OUT)
 
+    if phase == "phase1":
+        p = GPIO.PWM(7,50)		
+        p.start(5.0)				
+        p.stop()
+        GPIO.cleanup()
+        click(phase)
+    if phase == "phase2":
+        p = GPIO.PWM(7,50)		
+        p.start(5.0)				
+        p.stop()
+        GPIO.cleanup()
+        click(phase)
+    if phase == "phase3":
+        p = GPIO.PWM(7,50)		
+        p.start(5.0)				
+        p.stop()
+        GPIO.cleanup()
+        click(phase)
+    if phase == "phase4":
+        p = GPIO.PWM(7,50)		
+        p.start(5.0)				
+        p.stop()
+        GPIO.cleanup()
+        click(phase)
+    if phase == "phase5":
+        p = GPIO.PWM(7,50)		
+        p.start(5.0)				
+        p.stop()
+        GPIO.cleanup()
+        click(phase)
+    if phase == "phase6":
+        p = GPIO.PWM(7,50)		
+        p.start(5.0)				
+        p.stop()
+        GPIO.cleanup()
+        click(phase)
+    reset()
     return True
 
 from time import sleep
@@ -71,40 +109,53 @@ def request(imagePath):
     response = requests.post(request_url, data=params, headers=headers)
 
     if response:
-        word_list =  response.json()['words_result']
+        word_list = response.json()['words_result']
         print (word_list)
         for obj in word_list:
+            print (obj['words'].encode('utf-8'))
             if u"第1章" in obj['words']:
                 print("phase1")
-                click("phase1")
+                rotate("phase1")
                 break
             if u"近海" in obj['words']:
                 print("phase2")
-                click("phase2")
+                rotate("phase2")
                 break
             if u"选择" in obj['words']:
                 print("phase3")
-                click("phase3")
+                rotate("phase3")
                 break
             if u"撤" in obj['words']:
                 print("phase4")
-                click("phase4")
+                rotate("phase4")
                 break
             if u"战斗评价" in obj['words']:
                 print("phase5")
-                click("phase5")
+                rotate("phase5")
                 break
             if u"获得" in obj['words']:
                 print("phase6")
-                click("phase6")
+                rotate("phase6")
                 break
             if u"确定" in obj['words']:
                 print("phase7")
-                click("phase7")
+                rotate("phase7")
                 break
 
-snapshot("phase1")
-request("images/keychain.jpg")
+
+def run(phase):
+    snapshot(phase)
+
+    request("images/" + phase + ".jpg")
+
+    sleep(10)
+
+
+run("phase1")
+run("phase2")
+run("phase3")
+run("phase4")
+
 
 # request("images/i2.jpg")
 # request("images/i3.jpg")
