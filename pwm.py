@@ -16,7 +16,7 @@ p = GPIO.PWM(servopin,50) #50HZ
 p.start(0)
 
 def run(dc,second):
-    p.sleep(1)
+    sleep(1)
     a= datetime.datetime.now()
     while True:
         p.start(dc)
@@ -27,7 +27,10 @@ def run(dc,second):
         if (b-a).seconds>second:
             return
 
-run(12.5,5)
+
+run(0,5)
+run(2.5,5)
+run(5,5)
 run(7.5,5)
+run(10,5)
 run(12.5,5)
-run(7.5,5)
