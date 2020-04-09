@@ -7,8 +7,6 @@ import signal
 import atexit
 from time import sleep
  
-atexit.register(GPIO.cleanup)  
- 
 GPIO.setmode(GPIO.BOARD)
 
 
@@ -47,5 +45,7 @@ rotate(12.5,5)
 
 click(2.5,5)
 click(12.5,5)
+
+GPIO.cleanup()
 
 
