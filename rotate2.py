@@ -33,8 +33,6 @@ def click(angle):
 
 click(90)
 sleep(1)
-click(180)
-sleep(1)
 click(0)
 
 
