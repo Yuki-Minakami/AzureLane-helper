@@ -9,13 +9,18 @@ from time import sleep
  
 atexit.register(GPIO.cleanup)  
  
-servopin = 35
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(servopin, GPIO.OUT, initial=False)
-p = GPIO.PWM(servopin,50) #50HZ
+
+
+GPIO.setup(35, GPIO.OUT, initial=False)
+p = GPIO.PWM(35,50) #50HZ
 p.start(0)
 
-def run(dc,second):
+GPIO.setup(37, GPIO.OUT, initial=False)
+p2 = GPIO.PWM(37,50) #50HZ
+p2.start(0)
+
+def rotate(dc,second):
     sleep(1)
     a= datetime.datetime.now()
     while True:
@@ -26,6 +31,21 @@ def run(dc,second):
         if (b-a).seconds>second:
             return
 
-run(2.5,5)
-run(12.5,5)
+def click(dc,second):
+    sleep(1)
+    a= datetime.datetime.now()
+    while True:
+        p2.start(dc)
+        sleep(0.02)
+        p2.ChangeDutyCycle(0)
+        b= datetime.datetime.now()
+        if (b-a).seconds>second:
+            return
+
+rotate(2.5,5)
+rotate(12.5,5)
+
+click(2.5,5)
+click(12.5,5)
+
 
