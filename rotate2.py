@@ -34,6 +34,20 @@ def click(angle):
 click(90)
 sleep(1)
 click(0)
+sleep(1)
+
+rotate(90)
+sleep(1)
+click(90)
+sleep(1)
+click(0)
+sleep(1)
+
+rotate(120)
+sleep(1)
+click(90)
+sleep(1)
+click(0)
 
 
 p.stop()
