@@ -27,8 +27,8 @@ def rotate(angle):
 
 
 
-rotate(60,5) 
-rotate(180,5) 
+rotate(60) 
+rotate(180) 
 
 p.stop()
 GPIO.cleanup()
