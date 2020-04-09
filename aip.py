@@ -11,12 +11,11 @@ GPIO.setmode (GPIO.BOARD)
 
 
 # client_id 为官网获取的AK， client_secret 为官网获取的SK
-host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=vyRzDgxyEmIXKQtKnN1Fh4zB&client_secret=SjLaMh0ZYS8Fdi8geZYa9ox1hOfnwRY8'
-response = requests.get(host)
-# if response:
-print(response.json()["access_token"])
+# host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=vyRzDgxyEmIXKQtKnN1Fh4zB&client_secret=SjLaMh0ZYS8Fdi8geZYa9ox1hOfnwRY8'
+# response = requests.get(host)
+# print(response.json()["access_token"])
 
-access_token = response.json()["access_token"]
+access_token = '24.29bec222eae4365134068309b11ae653.2592000.1588994253.282335-19301522'
 
 # imgPath = sys.argv[1] 
 
@@ -24,6 +23,7 @@ import requests
 import base64
 
 def click(phase):
+    GPIO.setup(35, GPIO.OUT)
     p = GPIO.PWM(35,50)	
     p.start(5.0)				
     p.stop()
@@ -32,6 +32,7 @@ def click(phase):
 
 
 def rotate(phase):
+    GPIO.setup(7, GPIO.OUT)
     p = GPIO.PWM(7,50)		
     p.start(5.0)				
     p.stop()
@@ -103,7 +104,7 @@ def request(imagePath):
                 break
 
 snapshot("phase1")
-request("images/phase1.jpg")
+request("images/keychain.jpg")
 
 # request("images/i2.jpg")
 # request("images/i3.jpg")
