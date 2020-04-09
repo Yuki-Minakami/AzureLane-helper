@@ -50,6 +50,9 @@ sleep(1)
 click(0)
 
 
+rotate(0)
+
+
 p.stop()
 p2.stop()
 GPIO.cleanup()
