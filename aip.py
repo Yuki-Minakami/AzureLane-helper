@@ -50,7 +50,7 @@ def snapshot(imgName):
     camera.start_preview()
     # Camera warm-up time
     sleep(2)
-    camera.capture(imgName+'.jpg')
+    camera.capture("images/"+imgName+'.jpg')
     return True
 
 
@@ -100,11 +100,12 @@ def request(imagePath):
                 click("phase7")
                 break
 
+snapshot("phase1")
+request("images/phase1.jpg")
 
-request("images/i1.jpg")
-request("images/i2.jpg")
-request("images/i3.jpg")
-request("images/i4.jpg")
-request("images/i5.jpg")
-request("images/i6.jpg")
+# request("images/i2.jpg")
+# request("images/i3.jpg")
+# request("images/i4.jpg")
+# request("images/i5.jpg")
+# request("images/i6.jpg")
 
