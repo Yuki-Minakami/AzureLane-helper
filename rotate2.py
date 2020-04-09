@@ -15,15 +15,20 @@ p = GPIO.PWM(35,50) #50HZ
 p.start(0)
 sleep(2)
 
-try:
+def rotate(angle,time):
+    begin =datetime.datetime.now()
     while True:
-        angle = float(input("input angle you want"))
         p.ChangeDutyCycle(2+(angle/18))
         sleep(0.5)
         p.ChangeDutyCycle(0)
+        end = datetime.datetime.now()
+        if (end-begin).seconds >5:
+            return
 
-finally:
-    p.stop()
-    GPIO.cleanup()
 
 
+rotate(60,5) 
+rotate(180,5) 
+
+p.stop()
+GPIO.cleanup()
