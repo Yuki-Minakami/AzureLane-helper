@@ -20,7 +20,7 @@ duty=2
 while duty<=12:
     p.ChangeDutyCycle(duty)
     sleep(0.3)
-    p.ChangeDutyCycle(duty)
+    p.ChangeDutyCycle(0)
     sleep(0.7)
     duty=duty+1
 
