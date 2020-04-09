@@ -16,12 +16,10 @@ p.start(0)
 sleep(2)
 
 try:
-    while True:
-        angle = float(input("input angle you want"))
-        p.ChangeDutyCycle(2+(angle/18))
-        sleep(0.5)
-        p.ChangeDutyCycle(0)
-        break
+    angle = float(input("input angle you want"))
+    p.ChangeDutyCycle(2+(angle/18))
+    sleep(0.5)
+    p.ChangeDutyCycle(0)
 
 finally:
     p.stop()
