@@ -43,10 +43,10 @@ def click(dc,second):
 
 rotate(12.5,0.5)
 
-click(12.5,0.4)
+click(12.5,0.2)
 click(7.5,0.1)
 
-rotate(2.5,0.1)
+rotate(7.5,0.1)
 
 GPIO.cleanup()
 
