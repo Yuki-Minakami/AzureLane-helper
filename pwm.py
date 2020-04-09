@@ -13,21 +13,21 @@ servopin = 35
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(servopin, GPIO.OUT, initial=False)
 p = GPIO.PWM(servopin,50) #50HZ
-#p.start(0)
+p.start(0)
 
-a= datetime.datetime.now()
-while True:
-    p.start(12.5)
-    sleep(0.02)
-    p.ChangeDutyCycle(0)
-    sleep(0.2)
-    b= datetime.datetime.now()
-    if (b-a).seconds>5:
-	break
+def run(dc,second):
+    p.sleep(1)
+    a= datetime.datetime.now()
+    while True:
+        p.start(dc)
+        sleep(0.02)
+        p.ChangeDutyCycle(0)
+        sleep(0.2)
+        b= datetime.datetime.now()
+        if (b-a).seconds>second:
+            return
 
-while True:
-    p.start(5)
-    sleep(0.02)
-    p.ChangeDutyCycle(0)
-    sleep(0.2)
-  
+run(12.5,5)
+run(7.5,5)
+run(12.5,5)
+run(7.5,5)
