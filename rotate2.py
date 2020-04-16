@@ -22,36 +22,27 @@ sleep(2)
 
 def rotate(angle):
     p.ChangeDutyCycle(2+(angle/18))
-    sleep(0.5)
+    sleep(0.2)
     p.ChangeDutyCycle(0)
 
 def click(angle):
     p2.ChangeDutyCycle(2+(angle/18))
-    sleep(0.5)
+    sleep(0.2)
     p2.ChangeDutyCycle(0)
 
 
-click(90)
-sleep(1)
-click(0)
-sleep(1)
+def operate(angle):
+    rotate(angle)
+    sleep(1)
+    click(90)
+    sleep(1)
+    click(0)
+    sleep(1)
 
-rotate(90)
-sleep(1)
-click(90)
-sleep(1)
-click(0)
-sleep(1)
+operate(90)
+operate(20)
 
-rotate(120)
-sleep(1)
-click(90)
-sleep(1)
-click(0)
-
-
-rotate(0)
-
+operate(0)
 
 p.stop()
 p2.stop()
