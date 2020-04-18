@@ -23,7 +23,7 @@ def rotateA(angle):
     p.ChangeDutyCycle(0)
     sleep(1)
 
-i=3
+i=30
 while i>0:
     rotateA(90)
     rotateA(0)
