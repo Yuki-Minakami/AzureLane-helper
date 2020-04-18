@@ -9,7 +9,6 @@ from time import sleep
  
 GPIO.setmode(GPIO.BOARD)
 
-
 GPIO.setup(35, GPIO.OUT, initial=False)
 p = GPIO.PWM(35,50) #50HZ
 
