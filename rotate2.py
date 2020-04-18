@@ -20,29 +20,80 @@ p2.start(0)
 sleep(2)
 
 
-def rotate(angle):
+def rotateA(angle):
     p.ChangeDutyCycle(2+(angle/18))
     sleep(0.2)
     p.ChangeDutyCycle(0)
 
-def click(angle):
+def clickA(angle):
     p2.ChangeDutyCycle(2+(angle/18))
     sleep(0.2)
     p2.ChangeDutyCycle(0)
 
 
-def operate(angle):
-    rotate(angle)
+def operateA(angle):
+    rotateA(angle)
     sleep(1)
-    click(90)
+    clickA(90)
     sleep(1)
-    click(0)
+    clickA(0)
     sleep(1)
 
-operate(90)
-operate(20)
 
-operate(0)
+def rotateB():
+    return
+
+def clickB():
+    return
+    
+def operateB(angle):
+    return
+
+
+# num1
+operateA(90)
+
+#num2
+operateB(90)
+# resetB
+operateB(0)
+
+#num3
+operateA(20)
+
+#resetA
+operateA(0)
+
+#num4 第一关
+operateB(45)
+
+#第一关打完
+sleep(15)
+
+
+#点三下
+operateB(120)
+operateB(120)
+operateB(120)
+
+#resetB
+operateB(0)
+
+#打boss
+operateA(90)
+
+sleep(15)
+
+#resetA
+operateA(0)
+
+#点三下
+operateB(120)
+operateB(120)
+operateB(120)
+
+#resetB
+operateB(0)
 
 p.stop()
 p2.stop()
