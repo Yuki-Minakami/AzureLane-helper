@@ -51,7 +51,7 @@ def operateB(angle):
 
 
 # num1
-operateA(90)
+operateA(130)
 
 #num2
 operateB(90)
@@ -59,28 +59,28 @@ operateB(90)
 operateB(0)
 
 #num3
-operateA(20)
+operateA(40)
 
 #resetA
 operateA(0)
 
 #num4 第一关
-operateB(45)
+operateB(50)
 
 #第一关打完
 sleep(15)
 
 
 #点三下
-operateB(120)
-operateB(120)
-operateB(120)
+clickB(116)
+clickB(116)
+clickB(116)
 
 #resetB
 operateB(0)
 
 #打boss
-operateA(90)
+operateA(84)
 
 sleep(15)
 
@@ -88,9 +88,9 @@ sleep(15)
 operateA(0)
 
 #点三下
-operateB(120)
-operateB(120)
-operateB(120)
+clickB(116)
+clickB(116)
+clickB(116)
 
 #resetB
 operateB(0)
