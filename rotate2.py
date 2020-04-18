@@ -40,10 +40,10 @@ def operateA(angle):
     sleep(1)
 
 
-def rotateB():
+def rotateB(angle):
     return
 
-def clickB():
+def clickB(angle):
     return
     
 def operateB(angle):
@@ -54,9 +54,10 @@ def operateB(angle):
 operateA(130)
 
 #num2
-operateB(90)
+# operateB(90)
+
 # resetB
-operateB(0)
+# operateB(0)
 
 #num3
 operateA(40)
@@ -65,35 +66,35 @@ operateA(40)
 operateA(0)
 
 #num4 第一关
-operateB(50)
+# operateB(50)
 
 #第一关打完
-sleep(15)
+#sleep(15)
 
 
 #点三下
-clickB(116)
-clickB(116)
-clickB(116)
+# clickB(116)
+# clickB(116)
+# clickB(116)
 
 #resetB
-operateB(0)
+# operateB(0)
 
 #打boss
 operateA(84)
 
-sleep(15)
+# sleep(15)
 
 #resetA
 operateA(0)
 
 #点三下
-clickB(116)
-clickB(116)
-clickB(116)
+# clickB(116)
+# clickB(116)
+# clickB(116)
 
 #resetB
-operateB(0)
+# operateB(0)
 
 p.stop()
 p2.stop()
