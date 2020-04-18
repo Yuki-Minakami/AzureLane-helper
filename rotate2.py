@@ -103,10 +103,10 @@ def operateB(angle):
 # num1
 i=10
 while i>0:
-    operateA(130)
-    operateA(40)
+    operateA(90)
     operateA(0)
-    operateA(84)
+    
+    operateA(45)
     operateA(0)
     i =i-1
 
