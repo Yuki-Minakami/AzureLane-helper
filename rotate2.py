@@ -50,51 +50,65 @@ def operateB(angle):
     return
 
 
+# # num1
+# operateA(130)
+
+# #num2
+# # operateB(90)
+
+# # resetB
+# # operateB(0)
+
+# #num3
+# operateA(40)
+
+# #resetA
+# operateA(0)
+
+# #num4 第一关
+# # operateB(50)
+
+# #第一关打完
+# #sleep(15)
+
+
+# #点三下
+# # clickB(116)
+# # clickB(116)
+# # clickB(116)
+
+# #resetB
+# # operateB(0)
+
+# #打boss
+# operateA(84)
+
+# # sleep(15)
+
+# #resetA
+# operateA(0)
+
+#点三下
+# clickB(116)
+# clickB(116)
+# clickB(116)
+
+#resetB
+# operateB(0)
+
+
+
+
+
 # num1
-operateA(130)
-
-#num2
-# operateB(90)
-
-# resetB
-# operateB(0)
-
-#num3
-operateA(40)
-
-#resetA
-operateA(0)
-
-#num4 第一关
-# operateB(50)
-
-#第一关打完
-#sleep(15)
-
-
-#点三下
-# clickB(116)
-# clickB(116)
-# clickB(116)
-
-#resetB
-# operateB(0)
-
-#打boss
-operateA(84)
-
-# sleep(15)
-
-#resetA
-operateA(0)
-
-#点三下
-# clickB(116)
-# clickB(116)
-# clickB(116)
-
-#resetB
-# operateB(0)
+i=10
+while i>0:
+    operateA(130)
+    operateA(40)
+    operateA(0)
+    operateA(84)
+    operateA(0)
+    i =i-1
 
 p.stop()
 p2.stop()
