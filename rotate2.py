@@ -22,7 +22,7 @@ sleep(2)
 
 def rotateA(angle):
     p.ChangeDutyCycle(2+(angle/18))
-    sleep(0.2)
+    sleep(0.4)
     p.ChangeDutyCycle(0)
 
 def clickA(angle):
@@ -106,7 +106,7 @@ while i>0:
     operateA(90)
     operateA(0)
     
-    operateA(45)
+    operateA(50)
     operateA(0)
     i =i-1
 
