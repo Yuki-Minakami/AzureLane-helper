@@ -106,7 +106,7 @@ while i>0:
     operateA(90)
     operateA(0)
     
-    operateA(60)
+    operateA(55)
     operateA(0)
     i =i-1
 
