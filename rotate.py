@@ -12,31 +12,25 @@ GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(35, GPIO.OUT, initial=False)
 p = GPIO.PWM(35,50) #50HZ
+
 p.start(0)
-sleep(2)
 
-print("rotate 0 to 180")
-duty=2
-while duty<=12:
-    p.ChangeDutyCycle(duty)
-    sleep(0.3)
+sleep(1)
+
+
+def rotateA(angle):
+    p.ChangeDutyCycle(2+(angle/18))
+    sleep(0.4)
     p.ChangeDutyCycle(0)
-    sleep(0.7)
-    duty=duty+1
 
+i=3
+while i>0:
+    rotateA(90)
 
-print("back to 90")
-p.ChangeDutyCycle(7)
-sleep(0.5)
-p.ChangeDutyCycle(0)
-sleep(1.5)
-
-print("back to 0")
-p.ChangeDutyCycle(2)
-sleep(0.5)
-p.ChangeDutyCycle(0)
+    i =i-1
 
 p.stop()
+
 GPIO.cleanup()
 
 
