@@ -25,7 +25,8 @@ def rotateA(duty):
 
 i=10
 while i<50:
-    rotateA(i+5)
+    rotateA(i)
+    i=i+5
 
 p.stop()
 
