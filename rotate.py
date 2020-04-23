@@ -19,9 +19,9 @@ sleep(1)
 
 def rotateA(duty):
     p.ChangeDutyCycle(duty)
-    # sleep(0.1)
+    sleep(0.05)
     p.ChangeDutyCycle(0)
-    sleep(1)
+    sleep(2)
 
 i=10
 while i<50:
