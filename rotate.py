@@ -19,7 +19,7 @@ sleep(1)
 
 def rotateA(angle):
     p.ChangeDutyCycle(2.5+(angle/18))
-    sleep(0.4)
+    sleep(0.2)
     p.ChangeDutyCycle(0)
     sleep(1)
 
