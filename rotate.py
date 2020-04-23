@@ -10,7 +10,7 @@ from time import sleep
 GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(35, GPIO.OUT, initial=False)
-p = GPIO.PWM(35,50) #50HZ
+p = GPIO.PWM(35,200) #50HZ
 
 p.start(0)
 
@@ -18,7 +18,7 @@ sleep(1)
 
 
 def rotateA(angle):
-    p.ChangeDutyCycle(2.5+(angle/18))
+    p.ChangeDutyCycle(10+(angle/4.5))
     sleep(0.2)
     p.ChangeDutyCycle(0)
     sleep(1)
