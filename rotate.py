@@ -17,17 +17,15 @@ p.start(0)
 sleep(1)
 
 
-def rotateA(angle):
-    p.ChangeDutyCycle(10+(angle/4.5))
-    sleep(0.2)
-    p.ChangeDutyCycle(0)
+def rotateA(duty):
+    p.ChangeDutyCycle(duty)
+    # sleep(0.2)
+    # p.ChangeDutyCycle(0)
     sleep(1)
 
-i=8
-while i>0:
-    rotateA(90)
-    rotateA(0)
-    i =i-1
+i=10
+while i<50:
+    rotateA(i+5)
 
 p.stop()
 
