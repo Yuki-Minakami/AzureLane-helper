@@ -1,32 +1,34 @@
-# -*- coding: UTF-8 -*-
-import cv2
-import numpy as np
-# 1.模板匹配
-img = cv2.imread('images/i9.jpg')
-img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-template = cv2.imread('images/cl.jpg', 0)
-h, w = template.shape[:2]  # rows->h, cols->w
+import cv2 
+import numpy as np 
+  
 
-# 6种匹配方法
-methods = ['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED',
-           'cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF', 'cv2.TM_SQDIFF_NORMED']
+def match(main = 'images/battle.jpg',template = 'images/cv.jpg'):
+    path = template
 
-for meth in methods:
-    img2 = img.copy()
+    img_rgb = cv2.imread(main) 
+    img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY) 
+    template = cv2.imread(template,0) 
+    w, h = template.shape[::-1] 
 
-    # 匹配方法的真值
-    method = eval(meth)
-    res = cv2.matchTemplate(img_gray, template, method)
-    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    res = cv2.matchTemplate(img_gray,template,cv2.TM_CCOEFF_NORMED) 
 
-    # 如果是平方差匹配TM_SQDIFF或归一化平方差匹配TM_SQDIFF_NORMED，取最小值
-    if method in [cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]:
-        top_left = min_loc
-    else:
-        top_left = max_loc
-    bottom_right = (top_left[0] + w, top_left[1] + h)
-    cv2.circle(res, top_left, 10, 0, 2)
-    # 画矩形|
-    print(top_left,bottom_right)
-    cv2.rectangle(img2, top_left, bottom_right, (0, 255, 0), 2)
+    threshold = 0.8
+
+    loc = np.where( res >= threshold)  
+
+    begin = 0
+    result = []
+    for pt in zip(*loc[::-1]): 
+        if abs(pt[0] -begin) > 50 :
+            begin = pt[0]
+            result.append((pt[0],pt[1]))
+  
+    if len(result)==0 and path == 'images/bullet.jpg' :
+        result=[(0,0),'current']
+    return result
+
+
+# print(match())
+
+# bbArr = match('images/shot.png', 'images/bb.jpg')
+# print(bbArr)

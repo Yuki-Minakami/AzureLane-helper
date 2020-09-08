@@ -1,9 +1,11 @@
-from time import sleep
-from picamera import PiCamera
+from common import snapshot,match,getEnemy
 
-camera = PiCamera()
-camera.resolution = (1920, 1080)
-camera.start_preview()
-# Camera warm-up time
-sleep(2)
-camera.capture('foo.jpg')
+# snapshot()
+
+# ddArr = match('images/shot.png', 'images/dd.jpg')
+# dd2Arr = match('images/shot.png', 'images/dd2.jpg')
+# print(ddArr)
+# print(dd2Arr)
+
+ene = getEnemy()
+print(ene)
