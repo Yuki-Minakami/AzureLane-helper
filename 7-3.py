@@ -11,7 +11,7 @@ import copy
 from math import pow
 from time import sleep
 
-from common import click, goto,findNear,findNext,getEnemy,mission,drag,fightEnd,battle,getQuestion
+from common import click, goto,findNear,findNext,getEnemy,mission,drag,fightEnd,getQuestion,battle
 
 
 shotPath = 'images/shot.png'
@@ -20,24 +20,35 @@ missionPath = 'images/mission.png'
 
 
 def enter():
-    click((1100,700))
+    click((1200,500))
     sleep(1)
     click((1500,800))
     sleep(1)
     click((1500,900))
     sleep(4)
-    drag(1000,400,-50,-20)
-    sleep(1)
+
+def find(current,enemy):
+    sortedList = sorted(enemy)
+    distance = 0
+
+    if(sortedList[0][0]<400):
+        distance = (current[0][0]-sortedList[0][0]) + current[0][1] - sortedList[0][1]
+        return sortedList[0],distance
+    else:
+        return findNear(current,enemy)
 
 def fight(current):
     enemy = getEnemy()
-    print("enemy is ",enemy)
+    # print("enemy is ",enemy)
+
     boss  = match(shotPath, 'images/boss.jpg')
     print("boss is ",boss)
 
     question = getQuestion()
+    # print("question is ",question)
 
     questionAccess = True
+
     while len(question) > 0:
         x= question[0][0]
         y= question[0][1]
@@ -50,35 +61,36 @@ def fight(current):
         sleep(1)
         del question[0]
 
-    # print("boss is", boss)
-    enemy = getEnemy()
 
     if len(boss) != 0:
+        global ifBossAppeared
+        ifBossAppeared = True
         next = boss[0]
         type = 'boss'
     else: 
+        # if(ifBossAppeared):
+            
         # print("enemy is ",enemy)
-        next,distance = findNear(current,enemy)
+        next,distance = find(current,enemy)
         type = 'normal'
+
     print("next is",next)
     access = goto(next,enemy)
     if access == False or (not questionAccess):
         type='normal'
-
-
+    
     battle(type,bossTime,normalTime,extraTime)
     return type,next
 
-
 poch = 0
-bossTime = 140
-normalTime = 65
-extraTime = 15
+bossTime = 110
+normalTime = 50
+extraTime = 20
+
+ifBossAppeared = False
 
 current = [(1500,800)]
 count = 0
-
-
 while True:
     enter()
     mission()
@@ -90,3 +102,4 @@ while True:
         count += 1
         if(type == 'boss'):
             break
+# [(390, 338),(342, 583) (315, 843)]

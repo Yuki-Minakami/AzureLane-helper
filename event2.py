@@ -11,7 +11,7 @@ import copy
 from math import pow
 from time import sleep
 
-from common import click, goto,findNear,findNext,getEnemy,mission,findRight,findFar,roll,getElite,drag
+from common import click, goto,findNear,findNext,getEventEnemy,mission,drag,fightEnd,battle,getElite,snapshot
 
 
 shotPath = 'images/shot.png'
@@ -19,108 +19,74 @@ judgePath = 'images/judge.png'
 missionPath = 'images/mission.png'
 
 
-# count =0
-
-
 def enter():
-    click((700,900))
+    click((1400,550))
     sleep(1)
     click((1500,800))
     sleep(1)
     click((1500,900))
-    sleep(5)
-    mission()
-    sleep(6)
+    sleep(4)
+    drag(1000,400,0,150)
+    sleep(1)
 
 
-def scan():
-    enemy = getEnemy()
+def fight(current):
+    enemy = getEventEnemy()
+
     elite = getElite()
-    boss  = match(shotPath, 'images/boss.jpg')  
+    print("enemy is ",enemy)
 
-    if len(enemy) == 0 and len(elite) == 0 and len(boss) == 0:
-        return ['empty','empty']
+    print("elite is ",elite)
 
-    print("boss is", boss)
+    boss  = match(shotPath, 'images/eventBoss.jpg')
+    print("boss is ",boss)
+
+    if(len(boss) == 0 and len(enemy) == 0 and len(elite) == 0):
+        drag(1000,400,0,100)
+        enemy = getEventEnemy()
+        elite = getElite()
 
     if len(boss) != 0:
+        sleep(1)
+        click((1400,1000))
+        sleep(2)
+        snapshot()
+        boss  = match(shotPath, 'images/event/eventBoss.jpg')
+        print("boss is ",boss)
         next = boss[0]
         type = 'boss'
-        distance = 0
-    elif len(elite) > 0 :
+    elif len(elite) != 0: 
         print("elite is ",elite)
-        next = elite[0]
-        type = 'elite'
-    else:
-        print("enemy is ",enemy)
-        next, distance = findNear(current,enemy)
+        next,distance = findNear(current,elite)
         type = 'normal'
+    else : 
+        next,distance = findNear(current,enemy)
+        type = 'normal'
+    # else :
+    #     drag(1000,400,0,-200)
 
     print("next is",next)
-    return next,type,distance
+    access = goto(next,enemy)
+    if access == False:
+        type='normal'
+    battle(type,bossTime,normalTime,extraTime)
+    return type,next
 
-def fight():
-    next,type,distance = scan()
-    # next = result[0]
-    # type = result[1]
-    if next=='empty':
-        drag(1382,750,-250,-200)
-        sleep(2)
-        next = scan()[0]
-    result = goto(next)
-    if result == False:
-        goto(next)
-
-    global current
-    current = [next]
-    battle(type,distance)
-    return type
-
-
-
-def battle(type,distance):
-    if type=='boss':
-        sleep(bossTime)
-    elif type=='elite':
-        sleep(eliteTime)
-    else :
-        sleep(normalTime+int(distance/200))
-    click((1600,950))
-    sleep(1)
-    click((1600,950))
-    # 针对可能的紫船，多点两下
-    sleep(2)
-    click((800,450))
-    sleep(0.5)
-    click((800,450))
-
-    sleep(2.5)
-    click((1600,950))
-
-    sleep(6)
-    mission()
-    sleep(6)
-
-
-bossTime = 75
-normalTime = 65
-eliteTime = 70
-
-
-current = [(300,800)]
 poch = 0
+bossTime = 110
+normalTime = 60
+extraTime = 30
 
-
+current = [(800,800)]
+count = 0
 while True:
     enter()
-    poch +=1
-    print("current Poch is " ,poch)
-
-    count = 0 
+    mission()
+    sleep(1)
+    poch+=1
+    print("current ",poch)
     while(True):
-        count+=1
-        type = fight()
+        type,next = fight(current)
+        count += 1
         if(type == 'boss'):
             break
-
-# enter()

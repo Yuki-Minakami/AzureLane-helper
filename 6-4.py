@@ -25,7 +25,7 @@ def enter():
     click((1500,800))
     sleep(1)
     click((1500,900))
-    sleep(4)
+    sleep(6)
 
 def fight(current):
     enemy = getEnemy()
@@ -72,7 +72,8 @@ def battle(type):
         sleep(normalTime)
 
     if(not fightEnd()):
-        sleep(12)
+        print('-------')
+        sleep(15)
 
     click((1600,950))
     sleep(1)
@@ -93,8 +94,8 @@ def battle(type):
 
 
 poch = 0
-bossTime = 88
-normalTime = 48
+bossTime = 110
+normalTime = 65
 current = [(1500,300)]
 globalCurrent = current
 
@@ -103,6 +104,7 @@ globalCurrent = current
 
 while True:
     enter()
+    mission()
     poch+=1
     print("current ",poch)
     while(True):

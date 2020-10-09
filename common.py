@@ -121,46 +121,79 @@ def findLeft(current,enemy):
     return left
 
 def getElite():
-    elite = match(shotPath, 'images/elite.png')
-    elite2 = match(shotPath, 'images/elite1.png')
-
-    elite += elite2
+    snapshot()
+    imageArr = [
+        'images/event/elite1.jpg','images/event/elite2.jpg','images/event/elite3.jpg',
+        'images/event/elite4.jpg','images/event/elite5.jpg','images/event/elite6.jpg',
+        'images/event/elite7.jpg','images/event/elite8.jpg'
+    ]
     
+    eeArr = []
+    for image in imageArr:
+        eeArr += match(shotPath, image)
+
     final = []
-    for e in elite:
-        final.append((e[0]+30,e[1]+100))
+    for item in eeArr:
+        if no_same(item, final):
+            final.append((item[0]+30,item[1]+100))
 
     return final
 
 
 def getMountain():
     elite = match(shotPath, 'images/mountain.png')
-
     return elite
+
+def getEventEnemy():
+    snapshot()
+    imageArr = ['images/event/ee1.jpg','images/event/ee2.jpg','images/event/ee3.jpg',
+                'images/event/ee4.jpg','images/event/ee5.jpg','images/event/ee6.jpg',
+                'images/event/ee7.jpg'
+    ]
+
+    eeArr = []
+
+    for image in imageArr:
+        eeArr += match(shotPath, image)
+
+    final = []
+
+    for item in eeArr:
+        if no_same(item, final):
+            final.append(item)
+
+    return final
+
+
+def getQuestion():
+    snapshot()
+    imageArr = ['images/7-3/question1.jpg','images/7-3/question2.jpg']
+
+    eeArr = []
+
+    for image in imageArr:
+        eeArr += match(shotPath, image)
+
+    final = []
+    for item in eeArr:
+        if no_same(item, final):
+            final.append(item)
+
+    return final
+
 
 def getEnemy():
     snapshot()
-    bbArr = match(shotPath, 'images/bb.jpg')
-    bb2Arr = match(shotPath, 'images/bb2.png')
-    bb3Arr = match(shotPath, 'images/bb3.png')
-    bb4Arr = match(shotPath, 'images/bb4.png')
-    cvArr = match(shotPath, 'images/cv.jpg')
-    cv2Arr = match(shotPath, 'images/cv2.jpg')
-    ddArr = match(shotPath, 'images/dd.jpg')
-    dd2Arr = match(shotPath, 'images/dd2.jpg')
 
-    ddArr+=dd2Arr
+    imageArr = ['images/bb.jpg','images/bb2.png','images/bb3.png','images/bb4.png','images/bb5.png',
+                'images/cv.jpg','images/cv2.jpg','images/dd.jpg',
+                'images/dd2.jpg','images/dd3.jpg','images/trans.jpg','images/trans2.jpg']
 
-    bbArr+=bb2Arr
-    bbArr+=bb3Arr
-    bbArr+=bb4Arr
+    result = []
 
-    cvArr+= cv2Arr
+    for image in imageArr:
+        result += match(shotPath, image)
 
-    transArr = match(shotPath, 'images/trans.jpg')
-    transArr2 = match(shotPath, 'images/trans2.jpg')
-
-    result = bbArr+cvArr+ddArr+transArr+transArr2
     final = []
 
     for item in result:
@@ -172,14 +205,43 @@ def getEnemy():
 
 def no_same(target,list):
     for item in list:
-        if abs(target[0]-item[0]) < 35 and abs(target[1] -item[1])<35:
+        if abs(target[0]-item[0]) < 80 and abs(target[1] -item[1])<80:
             return False
     return True
+
+
+def battle(type,bossTime,normalTime,extraTime):
+    if type=='boss':
+        sleep(bossTime)
+    else:
+        sleep(normalTime)
+    
+    if(not fightEnd()):
+        print("not end")
+        sleep(extraTime)
+
+    click((1600,950))
+    sleep(1)
+    click((1600,950))
+    click((1600,700))
+    # 针对可能的紫船，多点两下
+    sleep(2)
+    click((800,450))
+    sleep(1)
+    click((800,450))
+
+    sleep(2)
+    click((1600,950))
+
+    sleep(5)
+    mission()
+    sleep(2)
+
 
 def goto(position,enemy):
     # origin = position
     # click(position)
-    print('---',position)
+    # print('---',position)
     click(position)
     # enemy = getEnemy()
     sleep(1)
@@ -214,7 +276,7 @@ def goto(position,enemy):
 # request(shotPath)
 # print(not fightEnd())
 # print(getElite())
-# print(getEnemy())
+# print(getEventEnemy())
 # print(getMountain())
 
 # elite = match(shotPath, 'images/eye.png')
@@ -229,3 +291,10 @@ def goto(position,enemy):
 
 # drag(1000,400,-50,-20)
 
+
+# drag(1000,400,0,150)
+# drag(1400,150,230,0)
+
+
+# boss  = match(shotPath, 'images/eventBoss.jpg')
+# print("boss is ",boss)
