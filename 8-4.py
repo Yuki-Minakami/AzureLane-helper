@@ -72,8 +72,8 @@ def fight(current):
 
 poch = 0
 bossTime = 140
-normalTime = 65
-extraTime = 15
+normalTime = 70
+extraTime = 20
 
 current = [(1500,800)]
 count = 0

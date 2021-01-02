@@ -123,9 +123,7 @@ def findLeft(current,enemy):
 def getElite():
     snapshot()
     imageArr = [
-        'images/event/elite1.jpg','images/event/elite2.jpg','images/event/elite3.jpg',
-        'images/event/elite4.jpg','images/event/elite5.jpg','images/event/elite6.jpg',
-        'images/event/elite7.jpg','images/event/elite8.jpg'
+        'images/event/baldemo.jpg','images/event/louen.jpg'
     ]
     
     eeArr = []
@@ -146,10 +144,10 @@ def getMountain():
 
 def getEventEnemy():
     snapshot()
-    imageArr = ['images/event/ee1.jpg','images/event/ee2.jpg','images/event/ee3.jpg',
-                'images/event/ee4.jpg','images/event/ee5.jpg','images/event/ee6.jpg',
-                'images/event/ee7.jpg'
-    ]
+    imageArr = [
+        'images/event/elite.jpg','images/event/elite1.jpg' ,'images/event/elite2.jpg','images/event/elite3.jpg','images/event/elite4.jpg','images/event/elite5.jpg',
+        'images/event/ee1.jpg','images/event/ee2.jpg','images/event/ee3.jpg','images/event/ee4.jpg','images/event/ee5.jpg','images/event/ee6.jpg'
+        ]
 
     eeArr = []
 
@@ -160,7 +158,7 @@ def getEventEnemy():
 
     for item in eeArr:
         if no_same(item, final):
-            final.append(item)
+            final.append((item[0],item[1]+60))
 
     return final
 
@@ -177,7 +175,7 @@ def getQuestion():
     final = []
     for item in eeArr:
         if no_same(item, final):
-            final.append(item)
+            final.append((item[0],item[1]+25))
 
     return final
 
@@ -185,8 +183,8 @@ def getQuestion():
 def getEnemy():
     snapshot()
 
-    imageArr = ['images/bb.jpg','images/bb2.png','images/bb3.png','images/bb4.png','images/bb5.png',
-                'images/cv.jpg','images/cv2.jpg','images/dd.jpg',
+    imageArr = ['images/bb.jpg','images/bb2.png','images/bb2.jpg','images/bb3.png','images/bb4.png','images/bb5.png',
+                'images/cv.jpg','images/cv2.jpg','images/cv3.jpg','images/dd.jpg',
                 'images/dd2.jpg','images/dd3.jpg','images/trans.jpg','images/trans2.jpg']
 
     result = []
@@ -197,7 +195,7 @@ def getEnemy():
     final = []
 
     for item in result:
-        if no_same(item, final):
+        if no_same(item, final) and item[0]< 1700 and item[1] < 900 :
             final.append(item)
 
     return final
@@ -216,10 +214,11 @@ def battle(type,bossTime,normalTime,extraTime):
     else:
         sleep(normalTime)
     
-    if(not fightEnd()):
-        print("not end")
+    while(not fightEnd()):
+        print("战斗尚未结束，进入加时")
         sleep(extraTime)
 
+    print("战斗结束")
     click((1600,950))
     sleep(1)
     click((1600,950))

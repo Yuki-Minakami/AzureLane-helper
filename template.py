@@ -21,6 +21,8 @@ def match(main = 'images/battle.jpg',template = 'images/cv.jpg'):
     for pt in zip(*loc[::-1]): 
         if abs(pt[0] -begin) > 50 :
             begin = pt[0]
+            if pt[1]<100:
+                continue
             result.append((pt[0]+20,pt[1]+20))
   
     if len(result)==0 and path == 'images/bullet.jpg' :

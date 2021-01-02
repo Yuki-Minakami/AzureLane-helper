@@ -21,34 +21,22 @@ markPath = 'images/mark.jpg'
 
 
 def enter():
-    click((1160,420))
+    click((400,600))
     sleep(1)
     click((1500,800))
     sleep(1)
     click((1500,900))
     sleep(4)
+    drag(1000,400,0,20)
     sleep(1)
-
-
 
 def fight(current):
     enemy = getEnemy()
     # print("enemy is ",enemy)
     boss  = match(shotPath, 'images/boss.jpg')
 
-    global count
-    if count == 5 and len(boss) == 0:
-        drag(1000,400,50,50)
-        snapshot()
-        boss  = match(shotPath, 'images/boss.jpg')
-        print("boss is ",boss)
-        enemy = getEnemy()
-
-
-
     if len(boss) != 0:
         print("boss is ",boss)
-
         next = boss[0]
         global displayedBoss
         displayedBoss = boss
@@ -69,13 +57,9 @@ def fight(current):
 
 
 poch = 0
-bossTime = 90
+bossTime = 120
 normalTime = 75
-extraTime =15
-current = [(1500,800)]
-initialMark = (1105,727)
-# displayedBoss = []
-
+extraTime =20
 
 while True:
     enter()
@@ -85,36 +69,12 @@ while True:
     print("current ",poch)
     count = 0
     displayedBoss = []
+    current = [(1200,600)]
 
     while(True):
         type,next = fight(current)
         count += 1
-        if count == 5:
-            print("-----------switch-----------")
-            click((1450,950))
-            sleep(4)
-            snapshot()
-            currentMark = match(shotPath, markPath)
-            print("currentMark is ",currentMark)
-
-            if initialMark[0] < currentMark[0][0]:
-                drag(1000,400,-20,-30)
-            else:
-                drag(1000,400,20,30)
-            sleep(1)
+        if count == 3:
+            current = [(400,300)]
         if(type == 'boss'):
             break
-
-# click((1450,950))
-# sleep(4)
-# snapshot()
-# currentMark = match(shotPath, markPath)
-# print("currentMark is ",currentMark)
-
-# drag(1000,400,-50,-50)
-
-# snapshot()
-# currentMark = match(shotPath, markPath)
-# print("currentMark is ",currentMark)
-
-# drag(1000,400,50,50)

@@ -94,8 +94,8 @@ def battle(type):
 
 
 poch = 0
-bossTime = 110
-normalTime = 65
+bossTime = 100
+normalTime = 70
 current = [(1500,300)]
 globalCurrent = current
 

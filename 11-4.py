@@ -4,7 +4,6 @@
 
 import sys
 import os
-
 from template import match
 from cv import request
 import copy
@@ -13,7 +12,6 @@ from time import sleep
 
 from common import click, goto,findNear,findNext,getEnemy,mission,drag,fightEnd,battle,snapshot
 
-
 shotPath = 'images/shot.png'
 judgePath = 'images/judge.png'
 missionPath = 'images/mission.png'
@@ -21,7 +19,7 @@ markPath = 'images/mark.jpg'
 
 
 def enter():
-    click((1160,420))
+    click((1360,750))
     sleep(1)
     click((1500,800))
     sleep(1)
@@ -30,24 +28,14 @@ def enter():
     sleep(1)
 
 
-
 def fight(current):
+    print("扫描敌人")
     enemy = getEnemy()
-    # print("enemy is ",enemy)
     boss  = match(shotPath, 'images/boss.jpg')
 
-    global count
-    if count == 5 and len(boss) == 0:
-        drag(1000,400,50,50)
-        snapshot()
-        boss  = match(shotPath, 'images/boss.jpg')
-        print("boss is ",boss)
-        enemy = getEnemy()
-
-
-
+    
     if len(boss) != 0:
-        print("boss is ",boss)
+        print("boss 出现",boss)
 
         next = boss[0]
         global displayedBoss
@@ -57,10 +45,11 @@ def fight(current):
         next = displayedBoss[0]
         type = 'boss'
     else: 
-        # print("enemy is ",enemy)
+        print("敌人列表",enemy)
         next,distance = findNear(current,enemy)
         type = 'normal'
-    print("next is",next)
+
+    print("下一步",next)
     access = goto(next,enemy)
     if access == False:
         type='normal'
@@ -69,52 +58,37 @@ def fight(current):
 
 
 poch = 0
-bossTime = 90
-normalTime = 75
-extraTime =15
-current = [(1500,800)]
+bossTime = 100
+normalTime = 70
+extraTime =10
+
 initialMark = (1105,727)
-# displayedBoss = []
 
 
 while True:
+    print("进入关卡")
     enter()
     mission()
+    print("自定义拖动")
+    drag(1000,400,-55,0)
     sleep(1)
     poch+=1
-    print("current ",poch)
+    print("当前为第",poch,"盘")
     count = 0
     displayedBoss = []
+    current = [(1500,800)]
 
     while(True):
+
         type,next = fight(current)
         count += 1
         if count == 5:
-            print("-----------switch-----------")
+            print("---------切换编队--------")
+            current = [(600,600)]
             click((1450,950))
             sleep(4)
-            snapshot()
-            currentMark = match(shotPath, markPath)
-            print("currentMark is ",currentMark)
-
-            if initialMark[0] < currentMark[0][0]:
-                drag(1000,400,-20,-30)
-            else:
-                drag(1000,400,20,30)
-            sleep(1)
+            # snapshot()
+            drag(1000,400,-150,-30)
+            
         if(type == 'boss'):
             break
-
-# click((1450,950))
-# sleep(4)
-# snapshot()
-# currentMark = match(shotPath, markPath)
-# print("currentMark is ",currentMark)
-
-# drag(1000,400,-50,-50)
-
-# snapshot()
-# currentMark = match(shotPath, markPath)
-# print("currentMark is ",currentMark)
-
-# drag(1000,400,50,50)

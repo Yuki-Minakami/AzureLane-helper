@@ -1,11 +1,6 @@
-from common import snapshot,match,getEnemy
+boss = 1
 
-# snapshot()
+if True:
+    boss = 2
 
-# ddArr = match('images/shot.png', 'images/dd.jpg')
-# dd2Arr = match('images/shot.png', 'images/dd2.jpg')
-# print(ddArr)
-# print(dd2Arr)
-
-ene = getEnemy()
-print(ene)
+print(boss)
